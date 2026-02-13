@@ -93,6 +93,36 @@ class List{
         temp->next = newNode;
     }
 
+    void deleteNode(int val){
+    if(head == NULL) return; // empty list
+
+    // Case 1: deleting the head
+    if(head->data == val){
+        pop_front();
+    }
+
+    // Case 2: deleting from middle or end
+    Node* curr = head;
+    while(curr->next != NULL && curr->next->data != val){
+        curr = curr->next;
+    }
+
+    if(curr->next == NULL){
+        cout << "Value not found in list\n";
+        return;
+    }
+
+    Node* temp = curr->next;
+    curr->next = curr->next->next;
+
+    // If deleting the tail, update tail pointer
+    if(temp == tail){
+        tail = curr;
+    }
+
+    delete temp;
+}
+
     int search(int key){
         Node* temp = head;
         int index=0;
@@ -119,6 +149,9 @@ int main(){
     ll.push_front(30);
     ll.push_front(35);
     ll.push_front(40);
+    ll.push_front(60);
+    ll.push_front(70);
+    ll.push_front(20);
 
     // ll.push_back(20);
 
@@ -127,6 +160,7 @@ int main(){
     // ll.pop_back();
 
     ll.Insert(50,2);
+    ll.deleteNode(60);
 
     
     ll.PrintLL();

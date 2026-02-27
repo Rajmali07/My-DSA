@@ -57,6 +57,9 @@ int main(){
     g[4].push_back(Edge(3, 2));
     g[4].push_back(Edge(5, 5));
 
+    dijkstra(0, g, v);
+
     return 0;
+
 
 }
